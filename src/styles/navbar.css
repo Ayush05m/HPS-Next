@@ -1,0 +1,9 @@
+
+nav a {
+    text-transform: uppercase;
+}
+
+.smNavitems input[type = checkbox]:checked .smNavitems:nth-child(2) ul {
+    display: flex;
+    flex-direction: column;
+}
