@@ -32,24 +32,24 @@ export const Navbar = () => {
             className="menu menu-sm dropdown-content bg-gray-200 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li className="smNavitems">
-              <a className="">HOME</a>
+              <a href="/" className="">HOME</a>
             </li>
             <li className="smNavitems">
               <input type="checkbox" name="" id="expandNav" />
               <label htmlFor="expandNav">
-                <a className="">SERVICES</a>
+                <a href="/" className="">SERVICES</a>
               </label>
               <ul className="p-2 ">
                 <li>
-                  <a>Online Checkup</a>
+                  <a href="/">Online Checkup</a>
                 </li>
                 <li>
-                  <a>Online Appointments</a>
+                  <a href="/">Online Appointments</a>
                 </li>
               </ul>
             </li>
             <li className="smNavitems">
-              <a>CONTACT US</a>
+              <a href="/">CONTACT US</a>
             </li>
           </ul>
         </div>
@@ -58,17 +58,17 @@ export const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>HOME</a>
+            <a href="/">HOME</a>
           </li>
           <li>
-            <a>ABOUT US</a>
+            <a href="/">ABOUT US</a>
           </li>
           <li>
             <details>
               <summary>SERVICES</summary>
               <ul className="p-2 bg-white w-44">
                 <li>
-                  <a>Online Checkup</a>
+                  <a href="/">Online Checkup</a>
                 </li>
                 <li>
                   <a>Online Appointment</a>
@@ -88,7 +88,7 @@ export const Navbar = () => {
               <div className="gettingLogged flex gap-4">
                 <button>
                   <a
-                    href="/login"
+                    href="/auth/login"
                     className="btn btn-ghost text-black hover:bg-slate-800 hover:text-stone-50 "
                   >
                     Login
@@ -96,7 +96,7 @@ export const Navbar = () => {
                 </button>
                 <button>
                   <a
-                    href="/signup"
+                    href="/auth/signup"
                     className="btn btn-ghost outline-chart-1 text-black hover:bg-slate-800 hover:text-stone-50 "
                   >
                     Signup
