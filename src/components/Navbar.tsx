@@ -6,6 +6,11 @@ import { a } from "framer-motion/client";
 
 export const Navbar = () => {
   const [isLogged, setLogged] = useState(false);
+  const [isServiceOpen, setIsServiceOpen] = useState(false);
+
+  const checkServiceOpen = () => {
+    setIsServiceOpen(prev => !prev);
+  }
 
   return (
     <div className="navbar bg-gray-200">
@@ -32,28 +37,46 @@ export const Navbar = () => {
             className="menu menu-sm dropdown-content bg-gray-200 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li className="smNavitems">
-              <a href="/" className="">HOME</a>
+              <a href="/" className="">
+                HOME
+              </a>
             </li>
             <li className="smNavitems">
-              <input type="checkbox" name="" id="expandNav" />
-              <label htmlFor="expandNav">
-                <a href="/" className="">SERVICES</a>
+              <a href="/about-us" className="">
+                About Us
+              </a>
+            </li>
+            <li className="smNavitems flex flex-row">
+              <input
+                type="checkbox"
+                name=""
+                id="expandNav"
+              />
+              <label htmlFor="expandNav" onClick={checkServiceOpen}>
+                <a className="">SERVICES</a>
               </label>
-              <ul className="p-2 ">
+              {
+                isServiceOpen?(
+
+                  <ul className="">
                 <li>
-                  <a href="/">Online Checkup</a>
+                  <a href="/services/online-checkup">Online Checkup</a>
                 </li>
                 <li>
-                  <a href="/">Online Appointments</a>
+                  <a href="/services/online-appointment">Online Appointments</a>
                 </li>
               </ul>
+              ):(<></>)
+              }
             </li>
             <li className="smNavitems">
               <a href="/">CONTACT US</a>
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl" href="/">HPS</a>
+        <a className="btn btn-ghost text-xl" href="/">
+          HPS
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -61,23 +84,23 @@ export const Navbar = () => {
             <a href="/">HOME</a>
           </li>
           <li>
-            <a href="/">ABOUT US</a>
+            <a href="/about-us">ABOUT US</a>
           </li>
           <li>
             <details>
               <summary>SERVICES</summary>
               <ul className="p-2 bg-white w-44">
                 <li>
-                  <a href="/">Online Checkup</a>
+                  <a href="/services/online-checkup">Online Checkup</a>
                 </li>
                 <li>
-                  <a>Online Appointment</a>
+                  <a href="/services/online-appointment">Online Appointment</a>
                 </li>
               </ul>
             </details>
           </li>
           <li>
-            <a>CONTACT US</a>
+            <a href="/contact">CONTACT US</a>
           </li>
         </ul>
       </div>
