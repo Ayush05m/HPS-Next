@@ -1,3 +1,4 @@
+import { linearGradient } from "framer-motion/client";
 import { useEffect, useRef, useState } from "react";
 
 export function Hero() {
@@ -25,10 +26,11 @@ export function Hero() {
         <div
           className="heroCorouselHome min-h-screen flex justify-end items-center  border-red-600 w-[100vw]"
           style={{
-            backgroundImage:
-              "url('/bg.jpg')",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
+            // backgroundImage:
+            //   "url('/bg.jpg')",
+            // backgroundRepeat: "no-repeat",
+            // backgroundSize: "cover",
+            background: `linear-gradient(to right, #11949d, #113775)`
           }}
         >
           <div className="HeroHead flex justify-end items-end mr-32 mt-10">
