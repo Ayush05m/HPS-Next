@@ -6,14 +6,9 @@ import { a } from "framer-motion/client";
 
 export const Navbar = () => {
   const [isLogged, setLogged] = useState(false);
-  const [isServiceOpen, setIsServiceOpen] = useState(false);
-
-  const checkServiceOpen = () => {
-    setIsServiceOpen(prev => !prev);
-  }
 
   return (
-    <div className="navbar bg-gray-200">
+    <div className="navbar bg-gray-50 shadow-2xl">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -34,7 +29,7 @@ export const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-gray-200 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-gray-200 rounded-box z-[1] mt-3 w-48 p-2 shadow"
           >
             <li className="smNavitems">
               <a href="/" className="">
@@ -43,34 +38,26 @@ export const Navbar = () => {
             </li>
             <li className="smNavitems">
               <a href="/about-us" className="">
-                About Us
+                ABOUT US
               </a>
             </li>
-            <li className="smNavitems flex flex-row">
-              <input
-                type="checkbox"
-                name=""
-                id="expandNav"
-              />
-              <label htmlFor="expandNav" onClick={checkServiceOpen}>
-                <a className="">SERVICES</a>
-              </label>
-              {
-                isServiceOpen?(
-
-                  <ul className="">
-                <li>
-                  <a href="/services/online-checkup">Online Checkup</a>
-                </li>
-                <li>
-                  <a href="/services/online-appointment">Online Appointments</a>
-                </li>
-              </ul>
-              ):(<></>)
-              }
+            <li className="smNavitems">
+              <details>
+                <summary>SERVICES</summary>
+                <ul className="">
+                  <li>
+                    <a href="/services/online-checkup">Online Checkup</a>
+                  </li>
+                  <li>
+                    <a href="/services/online-appointment">
+                      Book Physical Appointment
+                    </a>
+                  </li>
+                </ul>
+              </details>
             </li>
             <li className="smNavitems">
-              <a href="/">CONTACT US</a>
+              <a href="/contact-us">CONTACT US</a>
             </li>
           </ul>
         </div>
@@ -91,16 +78,16 @@ export const Navbar = () => {
               <summary>SERVICES</summary>
               <ul className="p-2 bg-white w-44">
                 <li>
-                  <a href="/services/online-checkup">Online Checkup</a>
+                  <a href="/services/online-checkup">Online Checkup Appointment</a>
                 </li>
                 <li>
-                  <a href="/services/online-appointment">Online Appointment</a>
+                  <a href="/services/online-appointment">Book Physical Appointment</a>
                 </li>
               </ul>
             </details>
           </li>
           <li>
-            <a href="/contact">CONTACT US</a>
+            <a href="/contact-us">CONTACT US</a>
           </li>
         </ul>
       </div>

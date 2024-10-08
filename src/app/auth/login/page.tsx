@@ -37,7 +37,7 @@ const Login = () => {
           <input type="text" name="" id="loginFormName" />
         </> */}
 
-          <button className="bg-gray-400 rounded-2xl py-3 px-8 mt-9 hover:text-white m-auto hover:bg-slate-800">
+          <button className="bg-gray-300 rounded-2xl py-3 px-8 mt-9 hover:text-white m-auto hover:bg-slate-800">
             Login
           </button>
         </form>

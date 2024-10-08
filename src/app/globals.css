@@ -16,6 +16,10 @@
   }
 } */
 
+*{
+  transition:  0.45s all;
+}
+
 body {
   /* color: var(--foreground);
   background: var(--background); */
