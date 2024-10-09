@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import "../styles/navbar.css";
 import { a } from "framer-motion/client";
+import { FaHospitalAlt } from "react-icons/fa";
 
 export const Navbar = () => {
   const [isLogged, setLogged] = useState(false);
@@ -37,9 +38,17 @@ export const Navbar = () => {
               </a>
             </li>
             <li className="smNavitems">
-              <a href="/about-us" className="">
-                ABOUT US
-              </a>
+              <details>
+                <summary>SPECIALISTS</summary>
+                <ul className="">
+                  <li>
+                    <a href="/services/specialist/our-doctors">OUR DOCTORS</a>
+                  </li>
+                  <li>
+                    <a href="/services/specialist/consultant">CONSULTANTS</a>
+                  </li>
+                </ul>
+              </details>
             </li>
             <li className="smNavitems">
               <details>
@@ -57,11 +66,17 @@ export const Navbar = () => {
               </details>
             </li>
             <li className="smNavitems">
+              <a href="/about-us" className="">
+                ABOUT US
+              </a>
+            </li>
+            <li className="smNavitems">
               <a href="/contact-us">CONTACT US</a>
             </li>
           </ul>
         </div>
         <a className="btn btn-ghost text-xl" href="/">
+          <FaHospitalAlt />
           HPS
         </a>
       </div>
@@ -78,10 +93,14 @@ export const Navbar = () => {
               <summary>SERVICES</summary>
               <ul className="p-2 bg-white w-44">
                 <li>
-                  <a href="/services/online-checkup">Online Checkup Appointment</a>
+                  <a href="/services/online-checkup">
+                    Online Checkup Appointment
+                  </a>
                 </li>
                 <li>
-                  <a href="/services/online-appointment">Book Physical Appointment</a>
+                  <a href="/services/online-appointment">
+                    Book Physical Appointment
+                  </a>
                 </li>
               </ul>
             </details>

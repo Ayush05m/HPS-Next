@@ -1,5 +1,7 @@
 import { linearGradient } from "framer-motion/client";
 import { useEffect, useRef, useState } from "react";
+import { FaUserDoctor } from "react-icons/fa6";
+import HeroCorousel from "./HeroCorousel";
 
 export function Hero() {
   // const heroScroll = useRef(null);
@@ -23,20 +25,7 @@ export function Hero() {
   return (
     <>
       <div className="flex overflow-x-scroll scroll-m-0 heroScroll">
-        <div
-          className="heroCorouselHome min-h-screen flex justify-end items-center  border-red-600 w-[100vw]"
-          style={{
-            // backgroundImage:
-            //   "url('/bg.jpg')",
-            // backgroundRepeat: "no-repeat",
-            // backgroundSize: "cover",
-            background: `linear-gradient(to right, #11949d, #113775)`
-          }}
-        >
-          <div className="HeroHead flex justify-end items-end mr-32 mt-10">
-            <div className="heroAppointmentBtn font-bold text-2xl border p-6 text-neutral-200 bg-gray-700 hover:bg-gray-800 cursor-pointer rounded-badge hover:text-slate-50">Book an Appointment</div>
-          </div>
-        </div>
+        <HeroCorousel />
       </div>
     </>
   );
