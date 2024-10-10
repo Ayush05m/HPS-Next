@@ -7,13 +7,13 @@ const HeroCorousel = () => {
       <div className="heroCorouselCover min-h-screen flex justify-center ">
         <div className="heroCorouselHome flex justify-center items-center flex-col">
           <div
-            className="heroCorouselHeader h-[65vh] flex justify-center items-center w-[80%] rounded-badge mt-16 border-red-600 "
+            className="heroCorouselHeader min-h-[600px] flex justify-center items-center w-[80%] rounded-badge mt-16 border-red-600 "
             style={{
               background: `linear-gradient(to right, #11949d, #113775)`,
             }}
           >
             <div className="heroHeadCover">
-              <div className="HeroHead flex flex-col h-[100%] justify-center gap-6 mb-14 items-center">
+              <div className="HeroHead flex flex-col justify-center gap-6 mb-14 items-center">
                 <h1 className="text-5xl tracking-wider w-[70%] text-center text-white font-bold">
                   Well-managed hospitals improve health outcomes for everyone,
                   everywhere.
@@ -30,8 +30,8 @@ const HeroCorousel = () => {
             </div>
           </div>
           <div className="heroCorouselContent flex justify-center items-center text-[#383683]">
-            <div className="heroAmbition w-[72%] -mt-24 bg-white flex justify-between p-16 rounded-badge">
-              <div className="heroAmbitionContent w-[58%]">
+            <div className="heroAmbition w-[72%] -mt-24 bg-white flex justify-between flex-col :flex-row p-16 rounded-badge">
+              <div className="heroAmbitionContent lg:w-[58%]">
                 <h1 className="text-xl font-semibold tracking-wide">
                   <span className="border-b-2 border-[#383683] py-3 tex-xl"> Knowledge. Interaction. Ambition.</span>
                 </h1>
@@ -57,7 +57,7 @@ const HeroCorousel = () => {
 
                 <div className="AboutBtn btn hover:text-white btn-outline btn-accent ">About Us</div>
               </div>
-              <div className="heroContentImg w-[35%]">
+              <div className="heroContentImg lg:w-[35%] flex items-center my-10 lg:m-0">
                 <img src="/bg.jpg" className="" />
               </div>
             </div>

@@ -1,15 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/navbar.css";
 import { a } from "framer-motion/client";
 import { FaHospitalAlt } from "react-icons/fa";
+import Login from "@/components/Login";
 
 export const Navbar = () => {
   const [isLogged, setLogged] = useState(false);
+  const [loginClicked, setLoginClicked] = useState(false);
+  // useEffect(() => {
+  //   document.addEventListener("click", () => {
+  //     setLoginClicked((prev) => {if(prev == true){ flase});
+  //   });
+  // });
 
   return (
-    <div className="navbar bg-gray-50 shadow-2xl">
+    <div className="navbar bg-gray-50 shadow-2xl z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -85,8 +92,18 @@ export const Navbar = () => {
           <li>
             <a href="/">HOME</a>
           </li>
-          <li>
-            <a href="/about-us">ABOUT US</a>
+          <li className="smNavitems">
+            <details>
+              <summary>SPECIALISTS</summary>
+              <ul className="p-2 bg-white w-44">
+                <li>
+                  <a href="/services/specialist/our-doctors">OUR DOCTORS</a>
+                </li>
+                <li>
+                  <a href="/services/specialist/consultant">CONSULTANTS</a>
+                </li>
+              </ul>
+            </details>
           </li>
           <li>
             <details>
@@ -106,6 +123,9 @@ export const Navbar = () => {
             </details>
           </li>
           <li>
+            <a href="/about-us">ABOUT US</a>
+          </li>
+          <li>
             <a href="/contact-us">CONTACT US</a>
           </li>
         </ul>
@@ -117,8 +137,10 @@ export const Navbar = () => {
               <div className="gettingLogged flex gap-4">
                 <button>
                   <a
-                    href="/auth/login"
                     className="btn btn-ghost text-black hover:bg-slate-800 hover:text-stone-50 "
+                    onClick={() => {
+                      setLoginClicked((prev) => !prev);
+                    }}
                   >
                     Login
                   </a>
@@ -169,6 +191,11 @@ export const Navbar = () => {
           )}
         </div>
       </div>
+      {loginClicked && (
+        <div className="loginPopup fixed right-0 m-5 top-14">
+          <Login />
+        </div>
+      )}
     </div>
   );
 };

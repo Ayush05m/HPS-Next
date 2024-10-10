@@ -1,3 +1,5 @@
+import InfiniteTestimonials from "@/components/infiniteTestimonials";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import React from "react";
 
 const AboutUs = () => {
@@ -31,6 +33,7 @@ const AboutUs = () => {
           </p>
         </div>
       </div>
+      <InfiniteTestimonials />
     </div>
   );
 };

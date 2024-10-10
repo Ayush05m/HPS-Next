@@ -120,3 +120,7 @@ input[type=number]::-webkit-inner-spin-button {
   padding: 8px;
 
 }
+
+@media (max-screen : 1000px) {
+  
+}
