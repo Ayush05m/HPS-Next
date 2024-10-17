@@ -19,21 +19,26 @@ const HeroCorousel = () => {
                   everywhere.
                 </h1>
                 <div className="heroAppointmentBtn flex gap-4 justify-center items-center font-bold text-xl px-4 py-3 text-neutral-200 cursor-pointer rounded-badge hover:text-slate-50">
-                  <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
-                    <span className="relative flex justify-center items-center gap-4 text-xl px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                      <RiHealthBookFill />
-                      Book an Appointment
-                    </span>
-                  </button>
+                  <a href="/book-an-appointment">
+                    <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
+                      <span className="relative flex justify-center items-center gap-4 text-xl px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                        <RiHealthBookFill />
+                        Book an Appointment
+                      </span>
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
           <div className="heroCorouselContent flex justify-center items-center text-[#383683]">
-            <div className="heroAmbition w-[72%] -mt-24 bg-white flex justify-between flex-col :flex-row p-16 rounded-badge">
+            <div className="heroAmbition w-[72%] -mt-24 bg-white flex justify-between flex-col lg:flex-row p-16 rounded-badge">
               <div className="heroAmbitionContent lg:w-[58%]">
                 <h1 className="text-xl font-semibold tracking-wide">
-                  <span className="border-b-2 border-[#383683] py-3 tex-xl"> Knowledge. Interaction. Ambition.</span>
+                  <span className="border-b-2 border-[#383683] py-3 tex-xl">
+                    {" "}
+                    Knowledge. Interaction. Ambition.
+                  </span>
                 </h1>
                 <p className="text-3xl font-semibold mt-10">
                   Through our members, we are the voice of hospitals and health
@@ -55,7 +60,9 @@ const HeroCorousel = () => {
                   networking that can transform healthcare delivery worldwide.
                 </p>
 
-                <div className="AboutBtn btn hover:text-white btn-outline btn-accent ">About Us</div>
+                <div className="AboutBtn btn hover:text-white btn-outline btn-accent ">
+                  About Us
+                </div>
               </div>
               <div className="heroContentImg lg:w-[35%] flex items-center my-10 lg:m-0">
                 <img src="/bg.jpg" className="" />

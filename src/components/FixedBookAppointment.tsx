@@ -7,7 +7,7 @@ const FixedBookAppointment = () => {
     <div className="fixed bottom-0 right-0">
       <div className="bottomBook">
         <span className="tooltip text-white"> Book an Appointment </span>
-        <span>
+        <span className="text-3xl">
           {" "}
           <FaCalendarAlt />
         </span>

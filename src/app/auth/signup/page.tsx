@@ -1,36 +1,147 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
+import "@/styles/signup.css";
 
 const Signup = () => {
   const [verify, setVerify] = useState(false);
-  const [fullname, setFullname] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [fullname, setFullname] = useState(firstname + " " + lastname);
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
   const [dob, setDob] = useState("");
   const [pass, setPass] = useState("");
+  const [matchPass, setMatchPass] = useState("text-gray-500");
   const [confirmPass, setConfirmPass] = useState("");
 
-  async function handleSubmit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // console.log(e);
-    // if (fullname)
-    const res = await fetch("/api/signup", {
+    const res = await fetch("/api/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ fullname, email, mobile, dob, confirmPass, pass }),
+      body: JSON.stringify({
+        name: fullname,
+        email: email,
+        mobile: mobile,
+        dob: dob,
+        pass: pass,
+      }),
     });
+    console.log(res);
   }
 
   useEffect(() => {
-    console.log(fullname, email, mobile, dob, pass, confirmPass);
-  }, [fullname, email, mobile, dob, pass, confirmPass]);
+    // console.log(fullname, email, mobile, dob, pass, confirmPass);
+    setFullname(firstname + " " + lastname);
+  }, [firstname, lastname, email, mobile, dob, pass, confirmPass]);
 
   return (
     <div className="loginForm min-h-[90vh] flex flex-col items-center border">
       <div className=" text-center p-16">
-        <h1 className="text-2xl">SignUp</h1>
+        {/* <h1 className="text-2xl">SignUp</h1> */}
+        <form className="form flex flex-col " onSubmit={(e) => handleSubmit(e)}>
+          <p className="title">Register </p>
+          <p className="message">Signup now and get full access to our app. </p>
+          <div className="name flex">
+            <label>
+              <input
+                required
+                placeholder=""
+                type="text"
+                className="inputSignup"
+                name="firstname"
+                onChange={(e) => {
+                  setFirstname(e.target.value);
+                }}
+                id="loginFormName"
+              />
+              <span>First Name</span>
+            </label>
+            <label>
+              <input
+                required
+                placeholder=""
+                type="text"
+                className="inputSignup"
+                name="lastname"
+                onChange={(e) => {
+                  setLastname(e.target.value);
+                }}
+              />
+              <span>Last Name</span>
+            </label>
+          </div>
+
+          <label>
+            <input
+              required
+              placeholder=""
+              type="email"
+              value={email}
+              id="loginFormEmail"
+              className="inputSignup bg-gray-100 border"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              aria-required
+            />
+            <span>Email</span>
+          </label>
+          <label>
+            <input
+              required
+              placeholder=""
+              type=" "
+              onChange={(e) => {
+                setMobile(e.target.value);
+              }}
+              className="inputSignup"
+              // pattern="[6-9]{3}[0-9]{7}"
+            />
+            <span>Mobile No.</span>
+          </label>
+          <label>
+            <input
+              required
+              placeholder=""
+              type="password"
+              className="inputSignup"
+              onChange={(e) => setConfirmPass(e.target.value)}
+            />
+            <span>Password</span>
+          </label>
+          <label id="loginFormConfirmPass">
+            <input
+              required
+              placeholder=""
+              type="password"
+              className="confirmPassSignup"
+              onChange={(e) => {
+                setConfirmPass(e.target.value);
+                console.log(confirmPass)
+                if (pass === confirmPass) {
+                  console.log(pass, confirmPass);
+                  setMatchPass("text-green-500");
+                } else if (pass === "") {
+                  console.log(pass, confirmPass);
+                  setMatchPass("text-gray-500");
+                } else {
+                  console.log(pass, confirmPass);
+                  setMatchPass("text-red-500");
+                }
+              }}
+              aria-required
+            />
+            <span className={matchPass}>Confirm password</span>
+          </label>
+          <button className="submit">Submit</button>
+          <p className="signin">
+            Already have an acount ? <a href="/">Signin</a>{" "}
+          </p>
+        </form>
+        {/* 
         <form
           // action="/api/signup"
           // method="post"
@@ -38,15 +149,7 @@ const Signup = () => {
         >
           <>
             <label htmlFor="loginFormName">Full Name:</label>
-            <input
-              type="text"
-              name="fullname"
-              onChange={(e) => {
-                setFullname(e.target.value);
-              }}
-              id="loginFormName"
-              required
-            />
+            <input type="text" required />
           </>
           <>
             <label htmlFor="loginFormEmail">Email:</label>
@@ -118,7 +221,7 @@ const Signup = () => {
           >
             SignUp
           </button>
-        </form>
+        </form> */}
       </div>
     </div>
   );
