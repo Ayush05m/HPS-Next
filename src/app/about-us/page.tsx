@@ -1,4 +1,4 @@
-// import InfiniteTestimonials from "@/components/infiniteTestimonials";
+import InfiniteTestimonials from "@/components/sideComponents/InfiniteTestimonials";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import React from "react";
 
@@ -33,7 +33,7 @@ const AboutUs = () => {
           </p>
         </div>
       </div>
-      {/* <InfiniteTestimonials /> */}
+      <InfiniteTestimonials />
     </div>
   );
 };

@@ -17,7 +17,6 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { nav } from "framer-motion/client";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -187,6 +186,25 @@ export function Navbar() {
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>Department</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[400px] ">
+                      {departments.map((component) => (
+                        <ListItem
+                          key={component}
+                          title={component}
+                          // key={component.title}
+                          // title={component.title}
+                          // href={component.href}
+                        >
+                          {/* {component.description} */}
+                        </ListItem>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Specialists</NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -226,27 +244,11 @@ export function Navbar() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Department</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[400px] ">
-                      {components.map((component) => (
-                        <ListItem
-                          key={component.title}
-                          title={component.title}
-                          href={component.href}
-                        >
-                          {/* {component.description} */}
-                        </ListItem>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/docs" legacyBehavior passHref>
+                  <Link href="/about-us" legacyBehavior passHref>
                     <NavigationMenuLink
                       className={navigationMenuTriggerStyle()}
                     >
-                      Documentation
+                      about
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
@@ -350,3 +352,18 @@ const ListItem = React.forwardRef<
   );
 });
 ListItem.displayName = "ListItem";
+
+const departments = [
+  "Gastroenterology",
+  "Cardiology",
+  "Neurology",
+  "Nephrology & Dialysis",
+  "Pulmonology",
+  "Oncology",
+  "Internal Medicine",
+  "Trauma Maxillofacial",
+  "Pediatrics",
+  "Diabetes Clinic",
+  "Skin & Cosmetic Clinic",
+  "ENT Department",
+];
