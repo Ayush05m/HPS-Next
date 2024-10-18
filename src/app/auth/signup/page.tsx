@@ -38,7 +38,7 @@ const Signup = () => {
   }, [firstname, lastname, email, mobile, dob, pass, confirmPass]);
 
   return (
-    <div className="loginForm min-h-[90vh] flex flex-col items-center border">
+    <div className="loginForm signupForm min-h-[90vh] flex flex-col items-center border">
       <div className=" text-center p-16">
         {/* <h1 className="text-2xl">SignUp</h1> */}
         <form className="form flex flex-col " onSubmit={(e) => handleSubmit(e)}>

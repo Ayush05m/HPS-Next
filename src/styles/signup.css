@@ -4,10 +4,13 @@
   flex-direction: column;
   gap: 10px;
   max-width: 400px;
-  background-color: #efecec87;
   padding: 20px 50px;
   border-radius: 20px;
   position: relative;
+}
+
+.signupForm .form {
+  background-color: #efecec87;
 }
 
 .title {
@@ -21,8 +24,8 @@
   padding-left: 30px;
 }
 
-.title::before,
-.title::after {
+.signupForm .title::before,
+.signupForm .title::after {
   position: absolute;
   content: "";
   height: 16px;
