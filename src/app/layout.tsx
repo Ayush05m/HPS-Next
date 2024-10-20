@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Navbar } from "@/components/Navbar";
 import "./globals.css";
+import FixedBookAppointment from "@/components/sideComponents/FixedBookAppointment";
+import { Footer } from "@/components/pageComponent/Footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,8 +31,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        {children}
+        <div className="w-full z-1 dark:bg-white bg-white  dark:bg-grid-black/[0.05] bg-grid-black/[0.1] relative flex flex-col items-center justify-center">
+          {/* Radial gradient for the container to give a faded look */}
+          {/* <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-white bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_60%,white)]"></div> */}
+          <Navbar />
+          <FixedBookAppointment />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );

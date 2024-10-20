@@ -1,0 +1,157 @@
+/* From Uiverse.io by Yaya12085 */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  padding: 20px 50px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.signupForm .form {
+  background-color: #efecec87;
+}
+
+.title {
+  font-size: 28px;
+  color: royalblue;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.signupForm .title::before,
+.signupForm .title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: royalblue;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+  background-color: royalblue;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.message,
+.signin {
+  color: rgba(88, 87, 87, 0.822);
+  font-size: 14px;
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a {
+  color: royalblue;
+}
+
+.signin a:hover {
+  text-decoration: underline royalblue;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .inputSignup,
+.confirmPassSignup {
+  /* margin: 30px 0; */
+  width: 100%;
+  padding: 10px 10px 20px 10px !important;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.form label .inputSignup+span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: gray;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.confirmPassSignup+span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form label .inputSignup:placeholder-shown+span,
+.confirmPassSignup:placeholder-shown+span {
+  top: 15px;
+  font-size: 0.9em;
+}
+
+.form label .inputSignup:focus+span,
+.form label .inputSignup:valid+span,
+.form label .confirmPassSignup:valid+span,
+.confirmPassSignup:focus+span {
+  top: 30px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+::-webkit-datetime-edit:not([aria-valuenow]),
+::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+::-webkit-datetime-edit-day-field:not([aria-valuenow]){
+  color: transparent;
+}
+
+.form label .inputSignup:valid+span {
+  color: green;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  background-color: royalblue;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+}
+
+.submit:hover {
+  background-color: rgb(56, 90, 194);
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}

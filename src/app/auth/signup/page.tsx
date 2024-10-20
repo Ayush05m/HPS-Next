@@ -1,123 +1,192 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import "@/styles/signup.css";
+
+import { format } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 const Signup = () => {
   const [verify, setVerify] = useState(false);
-  const [fullname, setFullname] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
-  const [dob, setDob] = useState("");
+  // const [dob, setDob] = useState<Date>();
   const [pass, setPass] = useState("");
+  const [matchPass, setMatchPass] = useState("text-gray-500");
   const [confirmPass, setConfirmPass] = useState("");
+  const [age, setAge] = useState("");
 
-  async function handleSubmit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // console.log(e);
-    // if (fullname)
-    const res = await fetch("/api/signup", {
+    const form = e.currentTarget;
+
+    const formDataObject = {
+      fullname: firstname + " " + lastname,
+      email,
+      mobile,
+      // dob,
+      password: pass,
+      age,
+    };
+    console.log(formDataObject);
+
+    const res = await fetch("/api/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ fullname, email, mobile, dob, confirmPass, pass }),
+      body: JSON.stringify(formDataObject),
     });
+    console.log(res);
   }
 
   useEffect(() => {
-    console.log(fullname, email, mobile, dob, pass, confirmPass);
-  }, [fullname, email, mobile, dob, pass, confirmPass]);
+    if (confirmPass === "") {
+      setMatchPass("text-gray-500"); // No input
+    } else if (confirmPass === pass) {
+      setMatchPass("text-[#008000]"); // Passwords match
+    } else {
+      setMatchPass("text-red-500"); // Passwords do not match
+    }
+    console.log(matchPass);
+  }, [pass, confirmPass]);
 
   return (
-    <div className="loginForm min-h-[90vh] flex flex-col items-center border">
+    <div className="loginForm signupForm min-h-[90vh] flex flex-col items-center border">
       <div className=" text-center p-16">
-        <h1 className="text-2xl">SignUp</h1>
-        <form
-          // action="/api/signup"
-          // method="post"
-          className=" signupform flex flex-col justify-center items-start p-5 gap-2"
-        >
-          <>
-            <label htmlFor="loginFormName">Full Name:</label>
+        <form className="form flex flex-col " onSubmit={(e) => handleSubmit(e)}>
+          <p className="title">Register </p>
+          <p className="message">Signup now and get full access to our app. </p>
+          <div className="name flex">
+            <label>
+              <input
+                required
+                placeholder=""
+                type="text"
+                className="inputSignup"
+                name="firstname"
+                onChange={(e) => {
+                  setFirstname(e.target.value);
+                }}
+                id="loginFormName"
+              />
+              <span>First Name</span>
+            </label>
+            <label>
+              <input
+                required
+                placeholder=""
+                type="text"
+                className="inputSignup"
+                name="lastname"
+                onChange={(e) => {
+                  setLastname(e.target.value);
+                }}
+              />
+              <span>Last Name</span>
+            </label>
+          </div>
+
+          <label>
             <input
-              type="text"
-              name="fullname"
-              onChange={(e) => {
-                setFullname(e.target.value);
-              }}
-              id="loginFormName"
               required
-            />
-          </>
-          <>
-            <label htmlFor="loginFormEmail">Email:</label>
-            <input
+              placeholder=""
               type="email"
-              name="email"
+              value={email}
               id="loginFormEmail"
-              className="bg-gray-100 border"
+              className="inputSignup bg-gray-100 border"
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
-              required
+              aria-required
             />
-          </>
-          <>
-            <label htmlFor="loginFormMobile">Ph No.:</label>
+            <span>Email</span>
+          </label>
+          <label>
             <input
-              type="tel"
-              name=""
-              id="loginFormMobile"
+              required
+              placeholder=""
+              type=" "
               onChange={(e) => {
                 setMobile(e.target.value);
               }}
-              required
+              className="inputSignup"
+              pattern="[0]{1}[6-9]{3}[0-9]{7}"
             />
-          </>
-          <>
-            <label htmlFor="loginFormDOB">DOB:</label>
+            <span>Mobile No.</span>
+          </label>
+          {/* <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant={"outline"}
+                className={cn(
+                  "justify-start flex gap-10 font-normal py-7",
+                  !dob && "text-muted-foreground"
+                )}
+              >
+                <CalendarIcon />
+                {dob ? format(dob, "PPP") : <span>DOB</span>}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0">
+              <Calendar
+                mode="single"
+                selected={dob}
+                onSelect={setDob}
+                initialFocus
+              />
+            </PopoverContent>
+          </Popover> */}
+
+          <label>
             <input
-              type="date"
-              name=""
-              id="loginFormDOB"
-              onChange={(e) => {
-                setDob(e.target.value);
-              }}
               required
+              placeholder=""
+              type="number"
+              className="inputSignup"
+              onChange={(e) => setAge(e.target.value)}
             />
-          </>
-          <>
-            <label htmlFor="loginFormPass">Password:</label>
+            <span>Age</span>
+          </label>
+
+          <label>
             <input
-              type="text"
-              name="passowrd"
-              id="loginFormPass"
-              className="bg-gray-100 border"
-              onChange={(e) => {
-                setPass(e.target.value);
-              }}
               required
+              placeholder=""
+              type="password"
+              className="inputSignup"
+              onChange={(e) => setPass(e.target.value)}
             />
-          </>
-          <>
-            <label htmlFor="loginFormConfirmPass">Confirm Password:</label>
+            <span>Password</span>
+          </label>
+          <label id="loginFormConfirmPass">
             <input
-              type="text"
-              name=""
-              id="loginFormConfirmPass"
+              required
+              placeholder=""
+              type="password"
+              className=" confirmPassSignup"
               onChange={(e) => {
                 setConfirmPass(e.target.value);
+                e.preventDefault();
+                // handleConfirmPassCheck(e);
               }}
-              required
+              aria-required="true"
             />
-          </>
-
-          <button
-            type="submit"
-            className="bg-cyan-300 rounded-2xl py-3 px-8 mt-9 hover:text-white m-auto cursor-pointer hover:bg-slate-800"
-            onClick={(e) => handleSubmit(e)}
-          >
-            SignUp
-          </button>
+            <span className={matchPass}>Confirm password</span>
+          </label>
+          <button className="submit">Submit</button>
+          <p className="signin">
+            Already have an acount ? <a href="/">Signin</a>{" "}
+          </p>
         </form>
       </div>
     </div>
