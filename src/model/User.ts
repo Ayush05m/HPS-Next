@@ -1,25 +1,30 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { ST } from "next/dist/shared/lib/utils";
 
 export interface User extends Document {
   username: string;
-  phone : number;
+  fullname: string;
+  mobile: number;
   email: string;
   password: string;
-  userId: Number;
-  age :Number;
+  age: Number;
   isVerified: boolean;
   joined: Date;
 }
 
 const UserSchema = new Schema({
-  username: {
+  // username: {
+  //   type: String,
+  //   required: [true, "Username is required"],
+  //   trim: true,
+  //   unique: true,
+  // },
+  fullname: {
     type: String,
-    required: [true, "Username is required"],
+    required: [true, "Name is required"],
     trim: true,
     unique: true,
   },
-  phone : {
+  mobile: {
     type: Number,
     required: [true, "Mobile Numbmer is required"],
     unique: true,
@@ -33,19 +38,19 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  userId: {
+  // userId: {
+  //   type: Number,
+  //   required: true,
+  // },
+  age: {
     type: Number,
     required: true,
   },
-  age : {
-    type : Number,
-    required :true
-  },
-  isVerified: {
-    type: Boolean,
-    required: true,
-    default: false,
-  },
+  // isVerified: {
+  //   type: Boolean,
+  //   required: true,
+  //   default: false,
+  // },
   joined: {
     type: Date,
     required: true,

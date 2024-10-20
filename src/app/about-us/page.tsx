@@ -1,30 +1,34 @@
 import React from "react";
-import Image from 'next/image'
+import Image from "next/image";
 import InfiniteTestimonials from "@/components/sideComponents/InfiniteTestimonials";
 import { BsPersonStanding } from "react-icons/bs";
+import { FaBedPulse } from "react-icons/fa6";
+import { FaUserDoctor } from "react-icons/fa6";
+import { FaRegHospital } from "react-icons/fa";
+
 import NumberAnimation from "@/components/sideComponents/Animation";
 
 const AboutUs = () => {
   return (
-    <div className="about-page bg-gray-200 p-3">
+    <div className="about-page ">
       <div className="aboutCover">
         <div className="aboutContent flex flex-col items-center">
-          <div className="vision">
+          <div className="vision w-full p-10 px-20 flex flex-col gap-5 bg-white">
             <h1
-              className="text-2xl p-4 font-extrabold text-[#113876] "
+              className="text-3xl font-extrabold text-[#113876] "
               style={{ letterSpacing: "3px" }}
             >
               Vision & Mission
             </h1>
             <p>
-              <span className="font-bold">Vision: </span>
+              <span className="font-bold text-xl">Vision: </span>
               <span>
                 Provide each patient with the world-class care, exceptional
                 service and compassion we would want for our loved ones.
               </span>
             </p>
             <p>
-              <span className="font-bold">Mission: </span>
+              <span className="font-bold text-xl">Mission: </span>
               <span>
                 Suyash Hospital is a compassionate provider of patient-centred
                 health services. We respect each person as a member of the
@@ -38,28 +42,50 @@ const AboutUs = () => {
             </p>
             <img src="/public/vision_mission.jpg" alt="" className="" />
           </div>
-          <Image src="/vision_mission.jpg" alt="" className="w-[70%]" />
-          <div className="currStats flex flex-wrap">
-            <div className="stat1 flex flex-col">
-              <NumberAnimation targetNumber={8765642} />
-              <p className="uppercase">outpatient treatment cases</p>
-            </div>
-            <div className="stat2 flex flex-col">
-              <NumberAnimation targetNumber={43215} />
-              <p className="uppercase">inpatient patients</p>
-            </div>
-            <div className="stat3 flex flex-col">
-              <NumberAnimation targetNumber={12542} />
-              <p className="uppercase">
-                employees, including 2161 physicians and 3413 nurses
+          <div className="aboutVisionImg flex justify-center bg-[#e6e3e4] w-[99vw]">
+            <Image
+              src="/vision_mission.jpg"
+              alt=""
+              className="w-[70%]"
+              width={500}
+              height={500}
+            />
+          </div>
+          <div className="currStats flex flex-wrap min-h-96 justify-evenly w-[99vw] bg-[#dfedf0] py-10">
+            <div className="stat1 flex flex-col gap-2 justify-center items-center p-10 w-80">
+              <BsPersonStanding className="text-5xl h-20" />
+              <NumberAnimation targetNumber={8765} className={"text-xl"} />
+              <p className="uppercase text-center font-thin text-gray-500 text-lg tracking-wider">
+                outpatient treatment cases
               </p>
             </div>
-            <div className="stat4 flex flex-col">
-              <NumberAnimation targetNumber={50} />
-              <p className="uppercase">medical departments</p>
+            <div className="stat2 flex flex-col gap-2 justify-center items-center p-10 w-80">
+              <FaBedPulse className="text-5xl h-20" />
+              <NumberAnimation targetNumber={432} />
+              <p className="uppercase text-center font-thin text-gray-500 text-lg tracking-wider">
+                inpatient patients
+              </p>
+            </div>
+            <div className="stat3 flex flex-col gap-2 justify-center items-center p-10 w-80">
+              <FaUserDoctor
+                className="text-5xl h-20"
+                fill=""
+                strokeWidth={0.35}
+              />
+              <NumberAnimation targetNumber={125} />
+              <p className="uppercase text-center font-thin text-gray-500 text-lg tracking-wider">
+                employees
+              </p>
+            </div>
+            <div className="stat4 flex flex-col gap-2 justify-center items-center p-10 w-80">
+              <FaRegHospital className="text-5xl h-20" />
+              <NumberAnimation targetNumber={25} />
+              <p className="uppercase text-center font-thin text-gray-500 text-lg tracking-wider">
+                medical departments
+              </p>
             </div>
           </div>
-          <div className="service py-20">
+          <div className="service py-20 w-full p-10 px-20 flex flex-col gap-5 bg-[#ffffff50]">
             <h1
               className="text-2xl p-4 font-extrabold text-[#113876] pt- 10"
               style={{ letterSpacing: "3px", lineHeight: "50px" }}
@@ -93,7 +119,7 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-      <div className="testimonials flex justify-center">
+      <div className="testimonials flex justify-center pb-24">
         <InfiniteTestimonials />
       </div>
     </div>

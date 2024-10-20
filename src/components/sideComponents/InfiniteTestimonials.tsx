@@ -4,6 +4,7 @@ import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
 const InfiniteTestimonials = () => {
   return (
     <div className="testimonials">
+      <h1 className="text-3xl p-5 font-extrabold text-[#113586] tracking-wider text-center">Testimonials </h1>
       <InfiniteMovingCards
         items={testimonials}
         direction="right"

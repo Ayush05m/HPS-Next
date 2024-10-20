@@ -7,14 +7,14 @@ const HeroCorousel = () => {
       <div className="heroCorouselCover min-h-screen flex justify-center ">
         <div className="heroCorouselHome flex justify-center items-center flex-col">
           <div
-            className="heroCorouselHeader min-h-[600px] flex justify-center items-center w-[80%] rounded-badge mt-16 border-red-600 "
+            className="heroCorouselHeader md:min-h-[600px] flex justify-center items-center md:w-[80%] w-[95%] min-h-[400px] rounded-badge mt-16 border-red-600 "
             style={{
               background: `linear-gradient(to right, #11949d, #113775)`,
             }}
           >
             <div className="heroHeadCover">
               <div className="HeroHead flex flex-col justify-center gap-6 mb-14 items-center">
-                <h1 className="text-5xl tracking-wider w-[70%] text-center text-white font-bold">
+                <h1 className="md:text-5xl text-2xl tracking-wider w-[70%] text-center text-white font-bold">
                   Well-managed hospitals improve health outcomes for everyone,
                   everywhere.
                 </h1>
@@ -32,15 +32,15 @@ const HeroCorousel = () => {
             </div>
           </div>
           <div className="heroCorouselContent flex justify-center items-center text-[#383683]">
-            <div className="heroAmbition w-[72%] -mt-24 bg-white flex justify-between flex-col lg:flex-row p-16 rounded-badge">
+            <div className="heroAmbition w-[85%] md:w-[72%]  -mt-24 bg-white flex justify-between flex-col lg:flex-row md:p-16 p-5 rounded-badge">
               <div className="heroAmbitionContent lg:w-[58%]">
-                <h1 className="text-xl font-semibold tracking-wide">
-                  <span className="border-b-2 border-[#383683] py-3 tex-xl">
+                <h1 className="text-xl font-semibold tracking-wide p-7 md:p-0">
+                  <span className="border-b-2 border-[#383683] md:py-3">
                     {" "}
                     Knowledge. Interaction. Ambition.
                   </span>
                 </h1>
-                <p className="text-3xl font-semibold mt-10">
+                <p className="text-xl md:text-3xl font-semibold md:mt-10">
                   Through our members, we are the voice of hospitals and health
                   systems on the global stage.
                 </p>

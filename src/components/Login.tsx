@@ -1,22 +1,53 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import "@/styles/login.css";
 
 const Login = () => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    console.log(form);
+
+    const formDataObject = {
+      email: form.email.value,
+      password: form.password.value,
+    };
+    console.log(formDataObject);
+
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formDataObject),
+      });
+      const data = await response.json();
+      console.log("Form submitted successfully:", data);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
+
   return (
     <>
       <div className="login">
         <div className="form-container">
           <p className="title">Login</p>
-          <form className="form flex flex-col">
+          <form className="form flex flex-col" onSubmit={handleSubmit}>
             <div className="input-group">
-              <label htmlFor="username">Username</label>
-              <input type="text" name="username" id="username" placeholder="" />
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                name="email"
+                id="email"
+                placeholder=""
+              />
             </div>
             <div className="input-group">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
-                name="password"
+                // name="password"
                 id="password"
                 placeholder=""
               />

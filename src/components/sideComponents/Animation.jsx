@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, useRef } from 'react';
 
-const NumberAnimation = ({ targetNumber, className }) => {
+const NumberAnimation = ({ targetNumber = 0, className="" }) => {
   const [number, setNumber] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
@@ -33,7 +33,7 @@ const NumberAnimation = ({ targetNumber, className }) => {
 
   useEffect(() => {
     if (isVisible && !animationComplete) {
-      const duration = 15;
+      const duration = 80;
       const step = (targetNumber - number) / duration;
       let currentNumber = number;
 
@@ -52,7 +52,7 @@ const NumberAnimation = ({ targetNumber, className }) => {
   }, [isVisible, number, targetNumber, animationComplete]);
 
   return (
-    <div className="number-animation flex justify-center items-center font-bold" ref={animationRef}>
+    <div className={className + "number-animation flex justify-center items-center font-bold"} ref={animationRef}>
       <span>{Math.round(number)}</span>
       {animationComplete && '+'}
     </div>
@@ -60,8 +60,3 @@ const NumberAnimation = ({ targetNumber, className }) => {
 };
 
 export default NumberAnimation;
-
-NumberAnimation.defaultProps = {
-  targetNumber: 0,
-  className: '',
-};

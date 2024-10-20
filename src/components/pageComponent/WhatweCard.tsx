@@ -13,8 +13,8 @@ export const WhatweCard = () => {
             </span>
           </h1>
         </div>
-        <div className="content flex gap-10 justify-between">
-          <div className="left w-[30%]">
+        <div className="content flex flex-col lg:flex-row gap-10 lg:justify-between md:justify-center">
+          <div className="left lg:w-[30%] sm:w-[80%]">
             <h1 className="text-3xl pb-5">
               <span className="font-bold tracking-wider text-[#113876]">
                 Connect with Patient
@@ -28,9 +28,9 @@ export const WhatweCard = () => {
               service delivery.
             </p>
           </div>
-          <div className="right grid grid-cols-2 gap-10">
+          <div className="right flex flex-wrap justify-center lg:grid grid-cols-2 gap-10 my-10">
             {weDoCardData.map((item) => {
-              return <TCBcard title={item.title} content={item.content} />;
+              return <TCBcard key={item.title} title={item.title} content={item.content} className=""/>;
             })}
           </div>
         </div>

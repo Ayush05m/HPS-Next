@@ -1,46 +1,68 @@
 "use client";
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import "@/styles/signup.css";
+
+import { format } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 const Signup = () => {
   const [verify, setVerify] = useState(false);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
-  const [fullname, setFullname] = useState(firstname + " " + lastname);
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
-  const [dob, setDob] = useState("");
+  // const [dob, setDob] = useState<Date>();
   const [pass, setPass] = useState("");
   const [matchPass, setMatchPass] = useState("text-gray-500");
   const [confirmPass, setConfirmPass] = useState("");
+  const [age, setAge] = useState("");
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
+
+    const formDataObject = {
+      fullname: firstname + " " + lastname,
+      email,
+      mobile,
+      // dob,
+      password: pass,
+      age,
+    };
+    console.log(formDataObject);
+
     const res = await fetch("/api/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        name: fullname,
-        email: email,
-        mobile: mobile,
-        dob: dob,
-        pass: pass,
-      }),
+      body: JSON.stringify(formDataObject),
     });
     console.log(res);
   }
 
   useEffect(() => {
-    // console.log(fullname, email, mobile, dob, pass, confirmPass);
-    setFullname(firstname + " " + lastname);
-  }, [firstname, lastname, email, mobile, dob, pass, confirmPass]);
+    if (confirmPass === "") {
+      setMatchPass("text-gray-500"); // No input
+    } else if (confirmPass === pass) {
+      setMatchPass("text-[#008000]"); // Passwords match
+    } else {
+      setMatchPass("text-red-500"); // Passwords do not match
+    }
+    console.log(matchPass);
+  }, [pass, confirmPass]);
 
   return (
     <div className="loginForm signupForm min-h-[90vh] flex flex-col items-center border">
       <div className=" text-center p-16">
-        {/* <h1 className="text-2xl">SignUp</h1> */}
         <form className="form flex flex-col " onSubmit={(e) => handleSubmit(e)}>
           <p className="title">Register </p>
           <p className="message">Signup now and get full access to our app. </p>
@@ -98,17 +120,51 @@ const Signup = () => {
                 setMobile(e.target.value);
               }}
               className="inputSignup"
-              // pattern="[6-9]{3}[0-9]{7}"
+              pattern="[0]{1}[6-9]{3}[0-9]{7}"
             />
             <span>Mobile No.</span>
           </label>
+          {/* <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant={"outline"}
+                className={cn(
+                  "justify-start flex gap-10 font-normal py-7",
+                  !dob && "text-muted-foreground"
+                )}
+              >
+                <CalendarIcon />
+                {dob ? format(dob, "PPP") : <span>DOB</span>}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0">
+              <Calendar
+                mode="single"
+                selected={dob}
+                onSelect={setDob}
+                initialFocus
+              />
+            </PopoverContent>
+          </Popover> */}
+
+          <label>
+            <input
+              required
+              placeholder=""
+              type="number"
+              className="inputSignup"
+              onChange={(e) => setAge(e.target.value)}
+            />
+            <span>Age</span>
+          </label>
+
           <label>
             <input
               required
               placeholder=""
               type="password"
               className="inputSignup"
-              onChange={(e) => setConfirmPass(e.target.value)}
+              onChange={(e) => setPass(e.target.value)}
             />
             <span>Password</span>
           </label>
@@ -117,22 +173,13 @@ const Signup = () => {
               required
               placeholder=""
               type="password"
-              className="confirmPassSignup"
+              className=" confirmPassSignup"
               onChange={(e) => {
                 setConfirmPass(e.target.value);
-                console.log(confirmPass)
-                if (pass === confirmPass) {
-                  console.log(pass, confirmPass);
-                  setMatchPass("text-green-500");
-                } else if (pass === "") {
-                  console.log(pass, confirmPass);
-                  setMatchPass("text-gray-500");
-                } else {
-                  console.log(pass, confirmPass);
-                  setMatchPass("text-red-500");
-                }
+                e.preventDefault();
+                // handleConfirmPassCheck(e);
               }}
-              aria-required
+              aria-required="true"
             />
             <span className={matchPass}>Confirm password</span>
           </label>
@@ -141,87 +188,6 @@ const Signup = () => {
             Already have an acount ? <a href="/">Signin</a>{" "}
           </p>
         </form>
-        {/* 
-        <form
-          // action="/api/signup"
-          // method="post"
-          className=" signupform flex flex-col justify-center items-start p-5 gap-2"
-        >
-          <>
-            <label htmlFor="loginFormName">Full Name:</label>
-            <input type="text" required />
-          </>
-          <>
-            <label htmlFor="loginFormEmail">Email:</label>
-            <input
-              type="email"
-              name="email"
-              id="loginFormEmail"
-              className="bg-gray-100 border"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              required
-            />
-          </>
-          <>
-            <label htmlFor="loginFormMobile">Ph No.:</label>
-            <input
-              type="tel"
-              name=""
-              id="loginFormMobile"
-              onChange={(e) => {
-                setMobile(e.target.value);
-              }}
-              required
-            />
-          </>
-          <>
-            <label htmlFor="loginFormDOB">DOB:</label>
-            <input
-              type="date"
-              name=""
-              id="loginFormDOB"
-              onChange={(e) => {
-                setDob(e.target.value);
-              }}
-              required
-            />
-          </>
-          <>
-            <label htmlFor="loginFormPass">Password:</label>
-            <input
-              type="text"
-              name="passowrd"
-              id="loginFormPass"
-              className="bg-gray-100 border"
-              onChange={(e) => {
-                setPass(e.target.value);
-              }}
-              required
-            />
-          </>
-          <>
-            <label htmlFor="loginFormConfirmPass">Confirm Password:</label>
-            <input
-              type="text"
-              name=""
-              id="loginFormConfirmPass"
-              onChange={(e) => {
-                setConfirmPass(e.target.value);
-              }}
-              required
-            />
-          </>
-
-          <button
-            type="submit"
-            className="bg-cyan-300 rounded-2xl py-3 px-8 mt-9 hover:text-white m-auto cursor-pointer hover:bg-slate-800"
-            onClick={(e) => handleSubmit(e)}
-          >
-            SignUp
-          </button>
-        </form> */}
       </div>
     </div>
   );

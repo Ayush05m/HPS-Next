@@ -4,23 +4,7 @@ import { FaUserDoctor } from "react-icons/fa6";
 import HeroCorousel from "../sideComponents/HeroCorousel";
 
 export function Hero() {
-  // const heroScroll = useRef(null);
   const [scrollIndex, setScrollIndex] = useState(0);
-
-  useEffect(() => {
-    // const handleScroll = (e) => {
-    //   console.log(e);
-    // console.log(heroScroll);
-    const heroScroll = document.querySelector(".heroScroll");
-
-    //   const scrollWidth = heroScroll.innerWidth;
-    // };
-    // heroScroll.addEventListener("wheel", handleScroll);
-
-    // return () => {
-    //   heroScroll.removeEventListener("wheel", handleScroll);
-    // };
-  }, [scrollIndex]);
 
   return (
     <>

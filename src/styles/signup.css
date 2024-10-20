@@ -112,18 +112,21 @@
 
 .form label .inputSignup:focus+span,
 .form label .inputSignup:valid+span,
+.form label .confirmPassSignup:valid+span,
 .confirmPassSignup:focus+span {
   top: 30px;
   font-size: 0.7em;
   font-weight: 600;
 }
 
-.form label .inputSignup:valid+span {
-  color: green;
+::-webkit-datetime-edit:not([aria-valuenow]),
+::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+::-webkit-datetime-edit-day-field:not([aria-valuenow]){
+  color: transparent;
 }
 
-.form label .inputSignup:invalid+.inputSignup:empty+span {
-  /* color: red; */
+.form label .inputSignup:valid+span {
+  color: green;
 }
 
 .submit {

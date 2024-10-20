@@ -2,7 +2,7 @@ import React from "react";
 
 export const TCBcard = (data: any) => {
   return (
-    <div className="TCBcard group flex flex-col justify-center items-center max-w-[400px] border p-5 rounded-3xl bg-white hover:bg-[#113876] hover:text-white hover:-translate-y-7">
+    <div  className="TCBcard group flex flex-col justify-center items-center max-w-[350px] min-w-[300px] border p-5 rounded-3xl bg-white hover:bg-[#113876] hover:text-white hover:-translate-y-7">
       <h2 className="text-xl font-semibold py-3 text-[#113876] tracking-wider group-hover:text-white">
         {data.title}
       </h2>
